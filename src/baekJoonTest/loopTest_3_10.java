@@ -2,19 +2,20 @@ package baekJoonTest;
 
 import java.util.Scanner;
 
-public class loopTest_3_7 {
+public class loopTest_3_10 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-
-		int T = sc.nextInt();
-
-		for (int i = 1; i <= T; i++) {
+		
+		for(int i = 0; ; i++) {
 			int a = sc.nextInt();
 			int b = sc.nextInt();
-			System.out.println("Case #" + i + ": " + (a + b));
+			
+			if((a + b) == 0) {
+				break;
+			}
+			System.out.println(a + b);
 		}
-
 	}
 
 }
