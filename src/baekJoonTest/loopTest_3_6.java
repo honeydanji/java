@@ -1,3 +1,5 @@
+package baekJoonTest;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -11,14 +13,20 @@ public class loopTest_3_6 {
 		 BufferedReader br = new BufferedReader(new InputStreamReader(System.in) );
 		 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out) );
 		 
-		 StringTokenizer st; // String
-		 int N = Integer.parseInt( br.readLine() ); // Int
+		 StringTokenizer st; 
+		 int N = Integer.parseInt(br.readLine()); 
 		 
-		 for(int i = 1; i <= N; i++) {
+		 for(int i=0; i<N; i++) {
 			 st = new StringTokenizer(br.readLine());
-			 bw.write((Integer.parseInt(st.nextToken())+Integer.parseInt(st.nextToken()))+"\n");
+			 
+			 int a = Integer.parseInt(st.nextToken());
+			 int b = Integer.parseInt(st.nextToken());
+			 int sum = a + b;
+			 
+			 bw.write(sum + "\n");
 		 }
-		 br.close();
+       bw.flush();  
+		bw.close();
 	}
 
 }
