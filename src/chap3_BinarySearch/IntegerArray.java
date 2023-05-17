@@ -3,7 +3,7 @@ package chap3_BinarySearch;
 import java.util.Arrays;
 import java.util.Random;
 
-public class integerArray {
+public class IntegerArray {
 	
 	private static void inputData(int[] data) {
 		Random rd = new Random();
