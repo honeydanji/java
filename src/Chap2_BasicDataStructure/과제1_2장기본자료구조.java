@@ -16,12 +16,18 @@ class PhyscData implements Comparable<PhyscData> {
 
 	@Override
 	public int compareTo(PhyscData data) {
-		if (name == data.name) {
-			return 1;
-		} else {
-			return 1;
-		}
+int result = this.name.compareTo(data.name);	// 양수 음수 판단
+		
+		if (result == 0) {	// 문자열 비교값이 같을 때 
+			int hresult = this.height - data.height;
+			if (hresult == 0) {
+				return (int) (this.vision - data.vision);
+			} else
+				return hresult;
+		} else
+			return result;	// -1 or 1
 	}
+	
 
 	@Override
 	public String toString() {
@@ -35,7 +41,27 @@ class PhyscData implements Comparable<PhyscData> {
 	}
 
 	static void sortData(PhyscData[] data) {
-
+		for (int i = 0; i < data.length; i++) {
+			for (int j = 0; j < data.length; j++) {
+				if (data[i].compareTo(data[j]) == 0) {
+					if (data[i].height - data[j].height == 0) {
+						if (data[i].vision - data[j].vision < 0) {
+							PhyscData temp = data[j];
+							data[j] = data[i];
+							data[i] = temp;
+						}
+					} else if (data[i].height - data[j].height < 0) {
+						PhyscData temp = data[j];
+						data[j] = data[i];
+						data[i] = temp;
+					}
+				} else if (data[i].compareTo(data[j]) < 0) {
+					PhyscData temp = data[j];
+					data[j] = data[i];
+					data[i] = temp;
+				}
+			}
+		}
 	}
 
 }
