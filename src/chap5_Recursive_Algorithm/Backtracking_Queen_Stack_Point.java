@@ -4,6 +4,7 @@
 package chap5_Recursive_Algorithm;
 
 import java.awt.Point;
+import java.util.Scanner;
 import java.util.Stack;
 
 //class Stack3 {
@@ -136,44 +137,45 @@ import java.util.Stack;
 
 public class Backtracking_Queen_Stack_Point {
 	static final int numberQueens = 4;
+	static Scanner sc = new Scanner(System.in);
 
 	public static void SolveQueen(int[][] d) {
-		int count = 0, mode = 0;
-		int ix = 0, iy = 0;
+		int count = 0;
+		int ix = sc.nextInt(), iy = sc.nextInt();
 		Stack<Point> st = new Stack<>();
 		Point p = new Point(ix, iy);
 		d[ix][iy] = 1;
-		count++;//경우의 수
-		st.push(p);
-//		while (count < 8) {
+		ix = 0;
+		iy = 0;
+		System.out.println(st.push(p));
 		while (ix < d.length) {
-			ix++;
 			int cy = 0;
 			while (ix < d.length) {
 				while (cy < d[0].length) {
-					while(cy < d[0].length) {
-						if (checkMove(d, ix, cy) == true && checkDiagSW(d, ix, cy) == true && checkDiagSE(d, ix, cy) == true) {
+					while (cy < d[0].length) {
+						if (checkMove(d, ix, cy) == true && checkDiagSW(d, ix, cy) == true
+								&& checkDiagSE(d, ix, cy) == true) {
 							d[ix][cy] = 1;
 							p = new Point(ix, cy);
 							st.push(p);
 							count++;
+							System.out.println(st.peek());
 							break;
 						}
 						cy++;
 					}
 					break;
 				}
-				System.out.println(st.peek());
-				
+				ix++;
 				if (cy != d[0].length) {
 					break;
 				} else {
-					p = st.peek();
-					//count--;
+					count--;
 					break;
 				}
 			}
 		}
+
 	}
 
 	public static boolean checkRow(int[][] d, int crow) {
@@ -257,12 +259,12 @@ public class Backtracking_Queen_Stack_Point {
 				data[i][j] = 0;
 
 		SolveQueen(data);
-
 		for (int i = 0; i < numberQueens; i++) {
 			for (int j = 0; j < data[0].length; j++) {
 				System.out.print(" " + data[i][j]);
 			}
 			System.out.println();
 		}
+		System.out.println();
 	}
 }
