@@ -136,7 +136,7 @@ import java.util.Stack;
 //}
 
 public class Backtracking_Queen_Stack_Point {
-	static final int numberQueens = 4;
+	static final int numberQueens = 8;
 	static Scanner sc = new Scanner(System.in);
 
 	public static void SolveQueen(int[][] d) {
