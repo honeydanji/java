@@ -48,7 +48,7 @@ public class study5_Rotto_6603 {
 		return result;
 	}
 
-	// n개 중에서 r개를 뽑아서 만들수 있는 집합의 경우의 수를 구하는 메서드
+	// n개 중에서 r개를 뽑아서 만들수 있는 집합의 경우의 수를 구하는 메서드s
 	public static BigInteger calculateCombination(int n, int r) {
 		if (n < r) {
 			throw new IllegalArgumentException("n이 r보다 작으면 안된다.");
@@ -75,6 +75,7 @@ public class study5_Rotto_6603 {
 
 		// list를 저장하는 2차원 배열
 		Integer[][] ss = new Integer[calculateCombination(n, 6).intValue()][6];
+		//List<Integer>[] ss = new List[calculateCombination(n, 6).intValue()];
 
 		// 집합(배열) s에 요소를 입력.
 		for (int i = 0; i < s.length; i++) {
@@ -87,7 +88,7 @@ public class study5_Rotto_6603 {
 			int[] arr = new int[6]; // 집합s로 만든 크기 6의 집합(배열) 선언
 
 			for (int j = 0; j < 6; j++) {
-				arr[j] = ((int) Math.floor(Math.random() * s.length + 1));
+				arr[j] = ((int) Math.floor(Math.random() * s.length));
 			}
 
 			// 집합s로부터 만들어진 배열 오름차순으로 정렬
@@ -122,13 +123,13 @@ public class study5_Rotto_6603 {
 		// 정수가 아닌 리스트가 요소로 이루어진 2차원 배열의 중복리스트 제거 하기.
 		List<List<Integer>> uniqueLists = removeDuplicates(ss);
 		
+		
 		// 중복을 제거한 2차원 배열의 크기가 6이 안나오면 나올때 까지 반복한다. 재귀?
-		if (uniqueLists.size() != calculateCombination(n, 6).intValue())
+		if (uniqueLists.size() != calculateCombination(n, 6).intValue()) {
 			for (List<Integer> sss : uniqueLists) {
 				System.out.println(sss);
 			}
-
-		
-		// sss가 7개가 될 때까지 재귀를 돌리자
+		}
+			
 	}
 }
