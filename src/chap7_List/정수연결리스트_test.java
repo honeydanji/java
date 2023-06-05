@@ -4,26 +4,26 @@ package chap7_List;
 import java.util.Random;
 import java.util.Scanner;
 
-class Node2 {
+class Node1 {
 	int data;
-	Node2 link;
+	Node1 link;
 
-	public Node2(int element) {
+	public Node1(int element) {
 		data = element;
 		link = null;
 	}
 }
 
-class LinkedList2 {
-	Node2 first;
+class LinkedList1 {
+	Node1 first;
 
-	public LinkedList2() {
+	public LinkedList1() {
 		first = null;
 	}
 
 	public int Delete(int element) { // delete the element
-		Node2 currentNode = first;
-		Node2 previousNode = currentNode;
+		Node1 currentNode = first;
+		Node1 previousNode = currentNode;
 		
 		while(previousNode.link != null) {
 			if(currentNode.data == element) {
@@ -39,7 +39,7 @@ class LinkedList2 {
 	}
 	
 	public void Show() { // 전체 리스트를 순서대로 출력한다.
-		 Node2 currentNode = first;
+		 Node1 currentNode = first;
 		    while (currentNode != null) {
 		        System.out.print(currentNode.data + " ");
 		        currentNode = currentNode.link;
@@ -49,9 +49,8 @@ class LinkedList2 {
 
 	public void Add(int element) // 임의 값을 삽입할 때 리스트가 오름차순으로 정렬이 되도록 한다
 	{
-		Node2 newNode = new Node2(element);
-		//Node2 currentNode;
-
+		Node1 newNode = new Node1(element);
+		
 		// 첫번쨰 노드 값이 비어 있으면 data와 link를 설정해준다.
 		if (first == null) {
 			first = newNode; // data = 4 , link = null
@@ -61,7 +60,7 @@ class LinkedList2 {
 			newNode.link = first;
 			first = newNode; // data = 2 , link = null
 		} else {
-			Node2 currentNode = first;
+			Node1 currentNode = first;
 			while (currentNode.link != null && element > currentNode.link.data) {
 				currentNode = currentNode.link;
 			}
@@ -72,7 +71,7 @@ class LinkedList2 {
 
 	public boolean Search(int data) { 
 		boolean ox = false;
-		Node2 currentNode = first;
+		Node1 currentNode = first;
 		while(currentNode.link != null) {
 			if(currentNode.data == data) {
 				ox = true;
@@ -127,7 +126,7 @@ public class 정수연결리스트_test {
 		Menu menu; // 메뉴
 		Random rand = new Random();
 		System.out.println("Linked List");
-		LinkedList2 l2 = new LinkedList2();
+		LinkedList1 l2 = new LinkedList1();
 		Scanner sc = new Scanner(System.in);
 		int data = 0;
 		System.out.println("inserted");
