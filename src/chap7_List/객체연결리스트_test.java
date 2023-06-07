@@ -76,44 +76,69 @@ class LinkedList2 {
 
 	public int Delete(SimpleObject element, Comparator<SimpleObject> cc) // delete the element
 	{
+		Node2 currentNode = first;
+		Node2 previousNode = null;
+		int count = 0;
 
+		while (currentNode != null) {
+			if (cc.compare(element, currentNode.data) == 0) {
+				if (previousNode == null) {
+					first = currentNode.link;
+				} else {
+					previousNode.link = currentNode.link;
+				}
+				count++;
+			}
+			previousNode = currentNode;
+			currentNode = currentNode.link;
+		}
+
+		return count;
 	}
 
 	public void Show() { // 전체 리스트를 순서대로 출력한다.
-		Node2 currentNode = first;
+		 Node2 currentNode = first;
 
-		while (currentNode.link != null) {
-			System.out.println(currentNode);
-			currentNode = currentNode.link;
-		}
-		System.out.println();
+		    while (currentNode != null) {
+		        System.out.println(currentNode.data);
+		        currentNode = currentNode.link;
+		    }
+		    System.out.println();
 	}
 
 	public void Add(SimpleObject element, Comparator<SimpleObject> cc) // 임의 값을 삽입할 때 리스트가 오름차순으로 정렬이 되도록 한다
 	{
 		Node2 newNode = new Node2(element);
-		Node2 currentNode = first;
-		Node2 previousNode = currentNode;
 
-		if (currentNode == null) {
+		if (first == null || cc.compare(element, first.data) < 0) {
+			newNode.link = first;
 			first = newNode;
+			return;
 		}
 
-		while (currentNode.link != null) {
-			if (cc.compare(element, currentNode.data) < 0) {
-				newNode.link = currentNode;
-				previousNode.link = newNode;
-				previousNode = newNode;
-			} else {
-				currentNode.link = newNode;
-				previousNode = currentNode;
-				currentNode = newNode;
-			}
+		Node2 currentNode = first;
+		Node2 previousNode = null;
+
+		while (currentNode != null && cc.compare(element, currentNode.data) >= 0) {
+			previousNode = currentNode;
+			currentNode = currentNode.link;
 		}
+
+		previousNode.link = newNode;
+		newNode.link = currentNode;
 	}
 
 	public boolean Search(SimpleObject element, Comparator<SimpleObject> cc) { // 전체 리스트를 순서대로 출력한다.
+		Node2 currentNode = first;
 
+		while (currentNode != null) {
+			if (cc.compare(element, currentNode.data) == 0) {
+				return true;
+			}
+			currentNode = currentNode.link;
+		}
+
+		return false;
 	}
 }
 
