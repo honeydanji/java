@@ -7,6 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class study6_polarBear_25918 {
+	// 리스트 안에 요소들이 전부 같으면 true 반환
+	public static boolean areAllElementsEqual(List<String> list) {
+	    if (list == null || list.isEmpty()) {
+	        // Handle empty or null lists
+	        return true;
+	    }
+	    return list.stream().distinct().count() == 1;
+	}
+	
 	public static void main(String[] args) throws IOException {
 		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 
@@ -31,7 +40,7 @@ public class study6_polarBear_25918 {
 		// 비워지지 않으면 -1을 출력한다.
 		while (true) {
 			// 괄호의 갯수가 홀수면 절대 비워질 수 없다.
-			if(bear.size() % 2 == 1) {
+			if(bear.size() % 2 == 1 || areAllElementsEqual(bear)) {
 				System.out.println(-1);
 				break;
 			}
@@ -44,7 +53,7 @@ public class study6_polarBear_25918 {
 			} else {
 				i++;
 			}
-			
+
 			// bear 리스트가 루프중에 비어졌으면 count 출력
 			if (bear.isEmpty()) {
 				System.out.println(count);
@@ -54,7 +63,7 @@ public class study6_polarBear_25918 {
 			if (i == bear.size() - 1) {
 				i = 0;
 				count++;
-			}
+			} 
 		}
 	}
 }
@@ -68,4 +77,11 @@ public class study6_polarBear_25918 {
 *	>>> 목록이 자주 수정되지 않을 때 잘 수행된다.
 *	LinkedList : 속도가 느리고 메모리 사용이 매우 크다. 데이터 추가 및 제거가 간편하다. 
 *	>>> 목록을 자주 수정할 때 유리하다.
+*/
+
+/*
+* 10
+* ((((((((()
+* i의 마지막에 와서 괄호가 제거되면 그 때 i는 다시 0이 되고 count가 올라간다.
+* bear사이즈는 작아지는데 비해 i는 그대로다. 
 */
