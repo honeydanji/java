@@ -31,7 +31,6 @@ public class study6_Parrot_14713 {
 		for (int i = 0; i < ssss.length; i++) {
 			sss.push(ssss[i]);
 		}
-
 		int count = 0;
 		// 각각의 앵무새들이 말한 단어를 스택에 쌓여 있는 단어와 비교한다.
 		// 모든 단어를 검사해서 스택이 비어지면 탈출한다.
@@ -51,7 +50,6 @@ public class study6_Parrot_14713 {
 					break;
 				}
 			}
-
 			if (sss.empty()) {
 				System.out.println("Possible");
 				break;
