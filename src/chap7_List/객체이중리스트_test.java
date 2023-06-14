@@ -1,5 +1,5 @@
 
-package Chap9_List;
+package chap7_List;
 /*
  * 정수 리스트 > 객체 리스트 > 
  */
