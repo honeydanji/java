@@ -1,6 +1,7 @@
 package Study;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -8,54 +9,64 @@ public class study7_Stack_5397 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-
 		// 테스트 case 입력
 		int n = sc.nextInt();
 
 		for (int i = 0; i < n; i++) {
-			List<String> list = new ArrayList<>();
-			String s = sc.nextLine();
+			List<String> list = new LinkedList<>();
+			List<String> text = new ArrayList<>();
+			String s = sc.next();
 			String[] ss = s.split("");
+			
 			for (int k = 0; k < ss.length; k++) {
 				list.add(ss[k]);
 			}
+			
+			System.out.println(list.size());// 확인
+			
 			int j = 0;
-			String temp;
+			int x = 0; //재배열 인덱스
+//			String temp; // temporary : 임시의
 			// 문자열 정렬
-			while(true) {
+			while(j != list.size()) {
 				switch (list.get(j)) {
 				case "<":
-					if ("<" == list.get(0)) { // 제일 처음이면 어떤 값이 오든 의미가 없다.
+					if ("<".equals(list.get(0))) { // 제일 처음이면 어떤 값이 오든 의미가 없다. // j == 0일 때라고 가정하자.
 						list.remove(j);
 						break;
 					}else{
 						list.remove(j);
-						temp = list.get(j-1);
+						x--;
 						break;
 					}
 				case ">":
-					if (">" == list.get(0)) {
+					if (">".equals(list.get(0))) {
 						list.remove(j);
 						break;
 					}else {
-						
+						list.remove(j);
+						if(text.get(x+1) != null) x++;
+//						if(text.get(x+1) != null) x++; // 오류 수정 // 디버깅
 						break;
 					}
 				case "-":
-					if (">" == list.get(0)) {
+					if ("-".equals(list.get(0))) {
 						list.remove(j);
 						break;
 					}else {
-						
+						list.remove(j);
+						text.remove(x);
 						break;
 					}
 				default:
+					text.add(x, list.get(j));
 					j++;
+					x++;
 				}
 			}
 			
 			// 정렬된 문자열 출력
-			System.out.println(list);
+			System.out.println(text);
 		}
 
 	}
