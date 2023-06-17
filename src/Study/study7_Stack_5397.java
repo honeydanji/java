@@ -9,7 +9,7 @@ public class study7_Stack_5397 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		// 테스트 case 입력
+		// 테스트 case 입력하세요.
 		int n = sc.nextInt();
 
 		for (int i = 0; i < n; i++) {
